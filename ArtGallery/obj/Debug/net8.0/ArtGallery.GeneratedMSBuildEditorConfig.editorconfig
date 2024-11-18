@@ -1,0 +1,227 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ArtGallery
+build_property.RootNamespace = ArtGallery
+build_property.ProjectDir = C:\Users\Sarim\source\repos\ArtGallery SQLite Done\ArtGallery\ArtGallery\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Sarim\source\repos\ArtGallery SQLite Done\ArtGallery\ArtGallery
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/AddToAuction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcQWRkVG9BdWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/ChangeAuction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcQ2hhbmdlQXVjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/ArtWorks/RemoveFromAuction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0V29ya3NcUmVtb3ZlRnJvbUF1Y3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/BidCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcQmlkQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Auctions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Cart/BuyNow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxCdXlOb3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Cart/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Cart/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Cart/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/AllItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxBbGxJdGVtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Sale/SaleItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZVxTYWxlSXRlbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sarim/source/repos/ArtGallery SQLite Done/ArtGallery/ArtGallery/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-upfam6sxf5
