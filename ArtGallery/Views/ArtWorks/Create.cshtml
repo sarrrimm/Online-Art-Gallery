@@ -1,0 +1,179 @@
+﻿@model ArtGallery.ViewModels.ArtWorkViewModel
+
+@{
+    ViewData["Title"] = "Create New Artwork";
+}
+
+@section Styles {
+    <style>
+        /* body {
+            background-color: #f8f9fa;
+        } */
+        label{
+            color: white;
+            font-weight: 200;
+        }
+
+        .card {
+            margin-top: 20px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: #343a40;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .form-group{
+            margin-top: 15px;
+        }
+        .form-control[readonly] {
+                background-color: #e9ecef;
+            }
+
+        </style>
+}
+
+<h1 class="my-4 text-center">@ViewData["Title"]</h1>
+<div class="pattern-bg"></div>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 class="my-2">New Artwork Details</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter Art Title"/>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <input asp-for="Image" class="form-control" placeholder="Image"/>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Category" class="control-label"></label>
+                        <select class="form-control" asp-for="Category" asp-items="@ViewBag.Categories" id="catselect">
+                            <option value="">Select Category</option>
+                        </select>
+                        <span class="text-danger">@ViewBag.BothEmptyMsg</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input for="IsChecked" id="newcat" class="my-2" type="checkbox" onchange="checkOption()" />
+                        <label for="IsChecked">New Category</label>
+                        <input placeholder="New Category Name..." id="othercat" class="form-control" asp-for="OtherCategory" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Size" class="control-label"></label>
+                        <input asp-for="Size" class="form-control" />
+                        <span asp-validation-for="Size" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SellType" class="control-label"></label>
+                        <select class="form-control" asp-for="SellType" id="SellTypeSelect" onchange="checkValue(this)">
+                            <option value="">Select Sell Type</option>
+                            <option value="FixedPrice">Fixed Price</option>
+                            <option value="Auction">Auction</option>
+                        </select>
+                        <span asp-validation-for="SellType" class="text-danger"></span>
+                        <span class="text-danger">@ViewBag.AuctionEmptyMsg</span>
+                    </div>
+
+                    <div class="form-group" id="aucgrp">
+                        <label asp-for="AuctionId" class="control-label">Auction</label>
+                        <select class="form-control" asp-for="AuctionId" asp-items="@ViewBag.Auctions" id="aucselect">
+                            <option value="">Select Auction</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Author" class="control-label"></label>
+                        <input asp-for="Author" class="form-control" />
+                        <span asp-validation-for="Author" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ReleaseDate" class="control-label"></label>
+                        <input asp-for="ReleaseDate" class="form-control" type="date" />
+                        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        var chkbox = document.getElementById("newcat");
+        var input = document.getElementById("othercat");
+        var sel = document.getElementById("catselect");
+        input.hidden = true;
+        function checkOption() {
+            if (chkbox.checked == true) {
+                input.hidden = false;
+                sel.hidden = true;
+                sel.value = null;
+            } else {
+                input.value = null;
+                input.hidden = true;
+                sel.value = "";
+                sel.hidden = false;
+            }
+        }
+        var typeSel = document.getElementById("SellTypeSelect");
+        var aucselect = document.getElementById("aucselect");
+        var aucgrp = document.getElementById("aucgrp");
+
+        aucgrp.hidden = true;
+        function checkValue(obj) {
+            if (obj.value == "Auction") {
+                aucgrp.hidden = false;
+                aucselect.value = "";
+            } else {
+                aucgrp.hidden = true;
+                aucselect.value = "";
+            }
+        }
+        window.addEventListener("load", (event) => {
+            typeSel.value = "";
+        });
+    </script>
+}

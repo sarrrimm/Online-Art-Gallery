@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ArtGallery.Models.Auction>
+@using Microsoft.AspNetCore.Identity
+@using ArtGallery.Data
+@inject UserManager<ApplicationUser> userManager;
+@{
+    ViewData["Title"] = "Auctions";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+@* <h1>Auctions</h1> *@
+<div class="pattern-bg"></div>
+<p>
+    @if (userManager.Users.FirstOrDefault(x => x.Id == userManager.GetUserId(User)).AccountType == "Admin")
+    {
+        <a asp-action="Create">Create New</a>
+    }
+</p>
+<h3 class="text-center mt-5">Current Auctions</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Auction Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            @if (item.EndDate >= DateTime.Now)
+            {
+                
+                <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuctionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuctionLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                    @if (userManager.Users.FirstOrDefault(x=>x.Id == userManager.GetUserId(User)).AccountType == "Admin")
+                    {
+                        <td>
+                        <a asp-action="Edit" asp-route-id="@item.AuctionId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.AuctionId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.AuctionId">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+}
+    </tbody>
+</table>
+@if (Model.OrderByDescending(x=>x.EndDate).Any(x=>x.EndDate <=  DateTime.Now))
+{
+    <h3 class="text-center mt-5">Recent Ended Auctions</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Auction Name
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Start Date
+                </th>
+                <th>
+                    End Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.EndDate <= DateTime.Now)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuctionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuctionLocation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

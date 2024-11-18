@@ -1,0 +1,315 @@
+﻿@* @model IEnumerable<ArtGallery.Models.ArtWork>
+
+@{
+    ViewData["Title"] = "Artworks";
+}
+<div class="pattern-bg"></div>
+<h1 class="text-center my-5">Artworks</h1>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+           <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    @if (item.Sold)
+                    {
+                        <div class="sold_item">Sold</div>
+                    }
+                        @if (item.Discount != null)
+                        {
+                        <div class="sale_item text-center">@item.Discount% OFF</div>
+                        }
+                        <img src="/Images/@item.imagePath" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: fill;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">@item.Title</h5>
+                        <p class="card-text"><strong>Category:</strong> @item.Category</p>
+                        <p class="card-text"><strong>Size:</strong> @item.Size</p>
+                        @if (item.SellType == "FixedPrice")
+                        {
+                            @if(item.DiscountedPrice != null)
+                            {
+                                <p class="card-text"><strong>Discounted Price:</strong> $@item.DiscountedPrice</p>
+                            }
+                            else
+                            {
+                                <p class="card-text"><strong>Price:</strong> $@item.Price</p>
+                            }
+                        }else if (item.Sold)
+                        {
+                            <p class="card-text maxBid"><strong>Sold at: </strong> $@item.SoldPrice</p>
+                        }
+                        else
+                        {
+                            <p class="card-text maxBid"><strong>Current Bid:</strong> $@(item.MaxBid ?? 0.00)</p>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            @if (item.Sold)
+                            {
+                                <a class="btn btn-dark w-100 disabled">Sold</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Details", new { id = item.ArtId })" class="btn btn-dark">Details</a>
+                                @if (item.SellType == "FixedPrice")
+                                {
+                                    <a asp-action="Create" asp-controller="Cart" asp-route-id="@item.ArtId" class="btn btn-success">Add to cart</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Auctions" asp-action="BidCreate" asp-route-id="@item.ArtId" class="btn btn-success">Bid</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+     }
+    </div>
+</div> *@
+
+ @using ArtGallery.Models
+                @model IEnumerable<ArtGallery.Models.ArtWork>
+
+@{
+    ViewData["Title"] = "Artworks";
+}
+
+<div class="pattern-bg"></div>
+<h1 class="text-center my-5">Artworks</h1>
+
+<!-- Button to open the sidebar -->
+<button id="openSidebarBtn" class="btn btn-dark mb-4 sort-btn">Sort & Filter</button>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <h3 class="sorth3">Sort Options</h3>
+    <div class="radio-group mx-4">
+        <input type="radio" id="sortTitleAsc" name="sortOption" value="titleAsc">
+        <label class="border-1" for="sortTitleAsc">Title (A-Z)</label><br>
+        <input type="radio" id="sortTitleDesc" name="sortOption" value="titleDesc">
+        <label class="border-1" for="sortTitleDesc">Title (Z-A)</label><br>
+        <input type="radio" id="sortPriceAsc" name="sortOption" value="priceAsc">
+        <label class="border-1" for="sortPriceAsc">Price (Low to High)</label><br>
+        <input type="radio" id="sortPriceDesc" name="sortOption" value="priceDesc">
+        <label class="border-1" for="sortPriceDesc">Price (High to Low)</label>
+    </div>
+    <h3 class="sorth3">Filter Options</h3>
+    <div class="radio-group mx-4">
+        <input type="radio" id="filterAll" name="filterOption" value="all" checked>
+        <label class="border-1" for="filterAll">All Categories</label><br>
+        @foreach (var category in ViewBag.Categories as List<Category>)
+        {
+            <input type="radio" id="filter@{@category.CategoryId}" name="filterOption" value="@category.CategoryName">
+            <label class="border-1" for="filter@{@category.CategoryId}">@category.CategoryName</label>
+
+            <br>
+        }
+    </div>
+    <button id="applyFiltersBtn" class="btn btn-success mt-4 m-4">Apply</button>
+</div>
+
+<div class="container">
+    <div class="row" id="artworksContainer">
+        @foreach (var item in Model)
+        {
+            <div class="col mb-4 artwork" data-category="@item.Category" data-title="@item.Title" data-price="@item.Price">
+                <div class="card h-100 border-0 shadow-sm">
+                    @if (item.Sold)
+                    {
+                        <div class="sold_item">Sold</div>
+                    }
+                    @if (item.Discount != null)
+                    {
+                        <div class="sale_item text-center">@item.Discount% OFF</div>
+                    }
+                    <img src="/Images/@item.imagePath" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: fill;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">@item.Title</h5>
+                        <p class="card-text"><strong>Category:</strong> @item.Category</p>
+                        <p class="card-text"><strong>Size:</strong> @item.Size</p>
+                        @if (item.SellType == "FixedPrice")
+                        {
+                            @if (item.DiscountedPrice != null)
+                            {
+                                <p class="card-text"><strong>Discounted Price:</strong> $@item.DiscountedPrice</p>
+                            }
+                            else
+                            {
+                                <p class="card-text"><strong>Price:</strong> $@item.Price</p>
+                            }
+                        }
+                        else if (item.Sold)
+                        {
+                            <p class="card-text maxBid"><strong>Sold at: </strong> $@item.SoldPrice</p>
+                        }
+                        else
+                        {
+                            <p class="card-text maxBid"><strong>Current Bid:</strong> $@(item.MaxBid ?? 0.00)</p>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            @if (item.Sold)
+                            {
+                                <a class="btn btn-dark w-100 disabled">Sold</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Details", new { id = item.ArtId })" class="btn btn-dark">Details</a>
+                                @if (item.SellType == "FixedPrice")
+                                {
+                                    <a asp-action="Create" asp-controller="Cart" asp-route-id="@item.ArtId" class="btn btn-success">Add to cart</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Auctions" asp-action="BidCreate" asp-route-id="@item.ArtId" class="btn btn-success">Bid</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .sort-btn{
+            transform: translate(20px, 0px);
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            color: white;
+            border-radius: 15px 0 0 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .sidebar ::-webkit-scrollbar{
+            margin-right: 10px;
+            background-color: transparent;
+            display: none;
+        }
+        .sidebar ::-webkit-scrollbar-thumb{
+            /* margin-right: 10px; */
+            background-color: transparent;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+        }
+
+        #openSidebarBtn {
+            transition: margin-right 0.5s;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: rgba(0, 128, 0, 0.7);
+            color: white;
+        }
+
+        .radio-group label:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .sorth3 {
+            margin-left: 8%;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "25%";
+            document.getElementById("openSidebarBtn").style.marginRight = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("openSidebarBtn").style.marginRight = "0";
+        }
+
+        document.getElementById('openSidebarBtn').addEventListener('click', openSidebar);
+
+        document.getElementById('applyFiltersBtn').addEventListener('click', function () {
+            const sortValue = document.querySelector('input[name="sortOption"]:checked').value;
+            const filterValue = document.querySelector('input[name="filterOption"]:checked').value;
+            const artworksContainer = document.getElementById('artworksContainer');
+            const artworks = Array.from(artworksContainer.getElementsByClassName('artwork'));
+
+            // Sort Artworks
+            let sortedArtworks = [...artworks];
+            switch (sortValue) {
+                case 'titleAsc':
+                    sortedArtworks.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
+                    break;
+                case 'titleDesc':
+                    sortedArtworks.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
+                    break;
+                case 'priceAsc':
+                    sortedArtworks.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+                    break;
+                case 'priceDesc':
+                    sortedArtworks.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+                    break;
+            }
+
+            // Filter Artworks
+            sortedArtworks.forEach(artwork => {
+                if (filterValue === 'all' || artwork.dataset.category === filterValue) {
+                    artwork.style.display = '';
+                } else {
+                    artwork.style.display = 'none';
+                }
+            });
+
+            // Clear container and append sorted and filtered artworks
+            artworksContainer.innerHTML = '';
+            sortedArtworks.forEach(artwork => artworksContainer.appendChild(artwork));
+
+            closeSidebar();
+        });
+    </script>
+}

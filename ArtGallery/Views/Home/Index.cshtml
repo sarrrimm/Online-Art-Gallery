@@ -1,0 +1,279 @@
+﻿@model ArtGallery.ViewModels.HomePageViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@section Styles {
+    <style>
+       /*  body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        } */
+        .sale_item {
+            position: absolute;
+            top: 2%;
+            left: -30px;
+            width: 40%;
+            transform: rotate(-40deg);
+            overflow: hidden;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            /* z-index: 10; */
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .section-image-text {
+            display: flex;
+            background-color: rgba(0,0,0,0.4);
+            align-items: center;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-radius: 15px;
+        }
+
+            .section-image-text img {
+                width: 50%;
+                border-radius: 15px;
+            }
+
+            .section-image-text .text-content {
+                padding: 1rem;
+                flex: 1;
+            }
+
+        .featured-art {
+            background-color: rgba(0,0,0,0.4);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+            .featured-art .art-piece {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+                .featured-art .art-piece img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 15px;
+                }
+
+                .featured-art .art-piece h5 {
+                    margin-top: 0.5rem;
+                }
+
+        .pattern-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/colorbg.jpg");
+            backdrop-filter: blur(10px);
+        }
+
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1200px;
+            position: relative;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+        /* Caption text */
+        .text {
+            color: white;
+            font-size: 15px;
+            padding: 8px 20px;
+            position: absolute;
+            top: 20px;
+            width: 100%;
+        }
+
+        .numbertext {
+            color: white;
+            font-size: 16px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            left: 10px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+            .active,
+            .dot:hover {
+                background-color: #717171;
+            }
+
+        .mySlides img {
+            height: 70vh;
+            border-radius: 15px;
+        }
+
+        .disPrice{
+            font-size: 0.9rem;
+        }
+        
+
+    </style>
+}
+
+<div class="pattern-bg"></div>
+
+<div class="container">
+    <!-- Carousel -->
+    <div class="container mb-3">
+        <div class="slideshow-container">
+            <div class="mySlides opacity2">
+                <div class="numbertext">1 / 3</div>
+                <img src="/Images/car1.jpg"
+                     style="width: 100%" />
+            </div>
+
+            <div class="mySlides opacity2">
+                <div class="numbertext">2 / 3</div>
+                <img src="/Images/car2.jpg" style="width: 100%" />
+            </div>
+
+            <div class="mySlides opacity2">
+                <div class="numbertext">3 / 3</div>
+                <img src="/Images/car3.jpg" style="width: 100%" />
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        <br />
+
+        <div style="text-align: center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+    
+    <div class="section-image-text text-white">
+        <img src="/Images/featured.jpg" alt="Featured Image">
+        <div class="text-content">
+            <h2>Discover Unique Art Pieces</h2>
+            <p>Explore our vast collection of unique and stunning artworks from talented artists around the world. Each piece is carefully curated to bring you the best in contemporary art.</p>
+            <a href="/ArtWorks/All" class="btn btn-primary">Browse Gallery</a>
+        </div>
+    </div>
+
+    <div class="featured-art text-white">
+        <h2 class="text-center mb-4">Featured Art Pieces</h2>
+        <div class="row">
+            @foreach (var art in Model.FeaturedArt)
+            {
+                <div class="col-md-4 art-piece">
+                    
+                    <img src="/Images/@art.imagePath" alt="@art.Title">
+                    @if(art.Discount != null){
+                        <h5>@art.Title <span class="disPrice">(@art.Discount% OFF)</span></h5>
+                        <p>@string.Format("{0:C}", art.DiscountedPrice)</p>
+                    }else{
+                        <h5>@art.Title</h5>
+                        <p>@string.Format("{0:C}", art.Price)</p>
+                    }
+                    <a href="/ArtWorks/Details/@art.ArtId" class="btn btn-primary">View Details</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaXZpHlS6Jpzt0n23Q9Ifjh" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIyks5Pupxf1zujfXtELz61Ff3t4LUVSo6PYOnk" crossorigin="anonymous"></script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides((slideIndex += n));
+        }
+        function currentSlide(n) {
+            showSlides((slideIndex = n));
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+    </script>
+}

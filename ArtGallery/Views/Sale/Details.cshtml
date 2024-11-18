@@ -1,0 +1,36 @@
+﻿@model ArtGallery.Models.Sale
+
+@{
+    ViewData["Title"] = "Details";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<h1>Details</h1>
+<div class="pattern-bg"></div>
+<div>
+    <h4>Sale</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SaleName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.SaleId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

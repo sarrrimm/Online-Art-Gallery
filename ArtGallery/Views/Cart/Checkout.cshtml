@@ -1,0 +1,107 @@
+﻿@model ArtGallery.ViewModels.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<h1>Checkout</h1>
+<div class="pattern-bg"></div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Checkout">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="pay" class="control-label">Payment Mode: </label>
+                <select class="form-select">
+                    <option value="">Select Payment Method</option>
+                    <option value="">Card Payment</option>
+                    <option value="">Cash on Delivery (COD)</option>
+                </select>
+            </div>
+            <h1>Items</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Items)
+                    {
+                        <tr>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                @item.Author
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                <img src="/Images/@item.ImagePath" style="width:100px; height:100px;" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group" style="text-align:right;">
+                <label style="text-align:right;">Sub Total: </label>
+                <input style="text-align:right;" asp-for="TotalAmount" readonly/>
+                <div>
+                    <label style="text-align:right;" class="my-2">Shipping Fee: 20$</label>
+                </div>
+                <div>
+                    <label style="text-align:right;">Grand Total: </label>
+                    <input style="text-align:right;" asp-for="GrandTotal" readonly/>
+
+                </div>
+                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Check Out" class="btn btn-dark" />
+                <a asp-action="Index" asp-route-id="@Model.UserId" class="btn btn-primary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,138 @@
+﻿@model ArtGallery.ViewModels.ArtWorkViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+            font-weight: 700;
+        }
+    </style>
+}
+<h1 class="text-center mx-3 my-4">@ViewData["Title"]</h1>
+<div class="pattern-bg"></div>
+<h4 class="text-center mb-4">ArtWork</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <label class="card-img-top my-3">Current Image:</label>
+            <img src="/Images/@ViewBag.CurrImg" alt="Not Available" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Edit" enctype="multipart/form-data" class="p-4 rounded shadow-sm">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3" id="imgGrp">
+                <label asp-for="Image" class="control-label d-block">New Image: </label>
+                <input asp-for="Image" id="imgInput" class="form-control" type="file" />
+                <p class="text-muted"><strong>Note: </strong>Only upload file if you want to Add or Edit the image.</p>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Category" class="control-label"></label>
+                <select class="form-control" asp-for="Category" asp-items="@ViewBag.Categories" id="catselect">
+                    <option value="">Select Category</option>
+                </select>
+                <span class="text-danger">@ViewBag.BothEmptyMsg</span>
+            </div>
+
+            <div class="form-group mb-3">
+                <input for="IsChecked" id="newcat" class="my-2" type="checkbox" onchange="checkOption()" />
+                <label for="IsChecked">New Category</label>
+                <input placeholder="New Category Name..." id="othercat" class="mb-3 mx-1 form-control" asp-for="OtherCategory" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+
+            <input asp-for="SellType" hidden id="SellTypeSelect" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" type="date" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Edit" class="btn btn-primary pt-5" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        var chkbox = document.getElementById("newcat");
+        var input = document.getElementById("othercat");
+        var sel = document.getElementById("catselect");
+        input.hidden = true;
+
+        function checkOption() {
+            if (chkbox.checked) {
+                input.hidden = false;
+                sel.hidden = true;
+                sel.value = null;
+            } else {
+                input.value = null;
+                input.hidden = true;
+                sel.value = "";
+                sel.hidden = false;
+            }
+        }
+
+        var typeSel = document.getElementById("SellTypeSelect");
+        var aucselect = document.getElementById("aucselect");
+        var aucgrp = document.getElementById("aucgrp");
+
+        aucgrp.hidden = true;
+
+        function checkValue(obj) {
+            if (obj.value == "Auction") {
+                aucgrp.hidden = false;
+                aucselect.value = "";
+            } else {
+                aucgrp.hidden = true;
+                aucselect.value = "";
+            }
+        }
+    </script>
+}

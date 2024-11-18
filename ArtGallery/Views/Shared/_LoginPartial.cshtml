@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ArtGallery.Data
+@using ArtGallery.Services
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject CartCountService CartService
+
+@{
+    var userId = SignInManager.IsSignedIn(User) ? UserManager.GetUserId(User) : null;
+    var cartCount = 0;
+    if (userId != null)
+    {
+        cartCount = await CartService.GetCartItemCountAsync(userId);
+    }
+}
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = UserManager.Users.FirstOrDefault(x=>x.Id == UserManager.GetUserId(User));
+        <li><span class="cart-count" data-count="@cartCount">@cartCount</span></li>
+        <li class="navitem"><a class="nav-link" asp-controller="Cart" asp-action="Index" asp-route-id="@user?.Id"><i class="fa-solid fa-cart-shopping mx-2"></i></a></li>
+        <li class="nav-item">
+        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @user?.FirstName!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

@@ -1,0 +1,76 @@
+﻿@model ArtGallery.ViewModels.ArtWorkViewModel
+
+@{
+    ViewData["Title"] = "Remove From Auction";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<div class="pattern-bg"></div>
+<h1>Change Auction</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RemoveFromAuction">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" readonly />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" readonly />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <img src="~/images/@ViewBag.ImagePath" style="width:100px;height:100px;" />
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" readonly />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellType" class="control-label"></label>
+                <input asp-for="SellType" class="form-control" readonly />
+                <span asp-validation-for="SellType" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="aucgrp">
+                <label asp-for="AuctionId" class="control-label">Auction</label>
+                <input class="form-control" asp-for="AuctionId" readonly/>
+                <span class="text-danger">@ViewBag.ForgotMsg</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" readonly />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" readonly />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Remove" class="btn btn-danger" />
+                <div class="text-danger">Note: Removing from auction will change the sell type to fixed price.</div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

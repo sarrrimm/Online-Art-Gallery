@@ -1,0 +1,90 @@
+﻿@model ArtGallery.ViewModels.SalesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<h1>Index</h1>
+<div class="pattern-bg"></div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sale
+            </th>
+            <th>
+                End Date
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Model.Sale.SaleName
+            </td>
+            <td>
+                @Model.Sale.EndDate
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@Model.Sale.SaleId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@Model.Sale.SaleId">Delete</a>|
+                <a asp-action="AllItems" asp-route-id="@Model.Sale.SaleId">Add items</a>
+            </td>
+        </tr>
+        @if (Model.ArtWorks != null)
+        {
+            
+        <tr class="border-top border-bottom"><td><h1 class="px-2 text-center">Items in sale</h1></td></tr>
+            
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Upload Date
+                </th>
+                <th></th>
+            </tr>
+            
+            @foreach (var art in Model.ArtWorks)
+                {
+                    <tr>
+                        <td>@art.Title</td>
+                        <td><img src="/Images/@art.imagePath" style="width: 100px; height: 100px;"/></td>
+                        <td>@art.Price</td>
+                        <td>@art.Author</td>
+                        <td>@art.UploadDate</td>
+                    <td>
+                            <a asp-action="RemoveFromSale" asp-route-id="@art.ArtId">Remove</a>
+                    </td>
+                    </tr>
+                }
+            }
+    </tbody>
+</table>

@@ -1,0 +1,84 @@
+﻿@model ArtGallery.Models.ArtWork
+
+@{
+    ViewData["Title"] = "Art Details";
+}
+<div class="pattern-bg"></div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="/images/@Model.imagePath" class="card-img-top" alt="Art Image">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h1 class="card-title">@Model.Title</h1>
+                <p class="card-text">@Model.Description</p>
+                <p><strong>Category:</strong> @Model.Category</p>
+                <p><strong>Size:</strong> @Model.Size</p>
+                @if(Model.SellType == "FixedPrice"){
+                    @if(Model.Discount != null){
+                        <p><strong>Discounted Price:</strong> $@Model.DiscountedPrice</p>
+                    }
+                    else{
+                        <p><strong>Price:</strong> $@Model.Price</p>
+                    }
+                }
+                <p><strong>Sell Type:</strong> @Model.SellType</p>
+                <p><strong>Author:</strong> @Model.Author</p>
+                <p><strong>Release Date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
+                @if (Model.SellType == "Auction" && Model.AuctionId != null)
+                {
+                    <p><strong>Current Bid: </strong> $@(@Model.MaxBid ?? 0.00) </p>
+                    <p><strong>Remaining Time: </strong>@ViewBag.RemTime</p>
+                    <a href="/Auctions/BidCreate/@Model.ArtId" class="btn btn-primary">Bid</a>
+                }
+                else
+                {
+                    <a href="/Cart/BuyNow/@Model.ArtId" class="btn btn-success">Buy Now</a>
+                    <a href="/Cart/Create/@Model.ArtId" class="btn btn-success my-3">Add To Cart</a>
+                }
+                <a asp-action="All" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        label{
+            color:white;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top{
+            height: 75vh;
+            width: 100%;
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary, .btn-success {
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        // Custom scripts can be added here if needed
+    </script>
+}

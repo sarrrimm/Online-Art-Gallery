@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ArtGallery.Models.ArtWork>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<h1>Index</h1>
+<div class="pattern-bg"></div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadDate)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img src="/Images/@Html.DisplayFor(modelItem => item.imagePath)" style="width:100px;height:100px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                    @if(item.Sold){
+                        <p>Sold</p>;
+                    }else if (item.Discount != null)
+                    {
+                        <p>Discount: @item.Discount%</p>
+                    }
+
+            </td>
+            <td>
+                @{
+                        @if(!item.Sold){
+                            
+                        @if (item.SellType == "Auction")
+                    {
+                        <a asp-action="ChangeAuction" asp-route-id="@item.ArtId">Change Auction</a>
+                            <a asp-action="RemoveFromAuction" asp-route-id="@item.ArtId">Remove Auction</a>
+                        }
+                        else if (item.Discount != null)
+                        {
+                            <a asp-action="RemoveFromSale" asp-controller="Sale" asp-route-id="@item.ArtId" asp-route-returnUrl="/ArtWorks/Index">Remove from sale</a>
+                        }
+                        else
+                    {
+                        <a asp-action="AddToAuction" asp-route-id="@item.ArtId">Auction</a>;
+                    }
+                <a asp-action="Edit" asp-route-id="@item.ArtId">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.ArtId">Delete</a>
+                }
+            }   
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+
+@section Styles {
+    <style>
+       /*  body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        } */
+
+        .contact-container {
+            background-color: #1c1c1c;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        label{
+            color: white;
+        }
+       /*  h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-group label {
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #4a4a4a;
+                border-radius: 5px;
+                background-color: #2a2a2a;
+                color: #ffffff;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: #4a90e2;
+                }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            background-color: #4a90e2;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #357ab8;
+            }
+ */
+        .contact-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+            .contact-info p {
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-info a {
+                color: #4a90e2;
+                text-decoration: none;
+            }
+
+                .contact-info a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+}
+<div class="pattern-bg"></div>
+<div class="container contact-container mt-4">
+    <h1>Contact Us</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" rows="5" placeholder="Your Message"></textarea>
+        </div>
+        <a asp-action="Index" class="btn btn-primary mt-2">Send Message</a>
+    </form>
+    <div class="contact-info">
+        <p>Phone: (123) 456-7890</p>
+        <p>Email: <a href="mailto:info@artgallery.com">info@artgallery.com</a></p>
+        <p>Address: 123 Art Gallery Lane, Creativity City, Imagination State, 12345</p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add any additional JavaScript here if needed
+        });
+    </script>
+}

@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ArtGallery.Data
+@model IEnumerable<ArtGallery.Models.CartItem>
+
+@inject UserManager<ApplicationUser> userManager 
+@{
+    ViewData["Title"] = "Cart";
+    var total = 0.00;
+}
+@section Styles {
+    <style>
+        label {
+            color: white;
+        }
+    </style>
+}
+<div class="pattern-bg"></div>
+<h1>Cart</h1>
+<a class="btn btn-danger" asp-action="Empty" asp-route-id="@userManager.GetUserId(User)">Empty</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Author
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <img src="/Images/@item.ImagePath" style="width:100px; height:100px;"/>
+            </td>
+
+            <td>
+                <a asp-action="Delete" asp-controller="Cart" asp-route-id="@item.Id">Remove</a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h4 style="text-align:right;">Total: @ViewBag.Total</h4>
+@if (Model.Count() > 0)
+{
+    <a style="text-align:right;" class="btn btn-primary" asp-action="Checkout" asp-route-id="@ViewBag.CartId">Checkout</a>
+}else{
+    <a style="text-align:right;" class="btn btn-primary">Checkout</a>
+}
